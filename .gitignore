@@ -1,0 +1,6 @@
+*.manifest
+*.d
+*.obj
+*.lib
+*.exe
+bin/
