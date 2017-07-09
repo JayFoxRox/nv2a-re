@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 
 import os
 import sys
@@ -8,9 +8,16 @@ import subprocess
 
 xbox_port = 9269 # "XBOX" on a phone ;)
 
-vp20compiler="/home/fox/Data/Projects/nxdk/tools/vp20compiler/vp20compiler"
+try:  
+   NXDK_DIR = os.environ["NXDK_DIR"]
+except KeyError: 
+   print("Please set the environment variable NXDK_DIR")
+   exit(1)
 
-def _run(command, *args, cwd=None):
+
+vp20compiler = NXDK_DIR +"/tools/vp20compiler/vp20compiler"
+
+def _run(command, *args, cwd = None):
     line = [command] + list(args)
     #logger.debug("Running: " + " ".join(line))
     if not cwd:
